@@ -1,11 +1,17 @@
+import { useState } from "react";
 import "./App.css";
+import { Header } from "./layout/header";
 
 function App() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  function toggleMenu() {
+    setIsMenuOpen((isOpen) => !isOpen);
+  }
+
   return (
     <>
-      <nav className="bg-orange-400">
-        Hola <span className="font-sans">World</span>
-      </nav>
+      <Header isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
     </>
   );
 }
