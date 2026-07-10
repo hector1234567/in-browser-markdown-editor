@@ -34,4 +34,6 @@
   /* Orange */
   --color-orange-600: #e60013;
   --color-orange-400: #f39765;
+
+  --default-transition-duration: 0.3s;
 }

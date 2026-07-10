@@ -9,7 +9,7 @@ type MenuButtonProps = {
 export default function MenuButton({ isOpen, toggleOpen }: MenuButtonProps) {
   return (
     <button
-      className="cursor-pointer self-stretch bg-slate-700 px-4 hover:bg-orange-600"
+      className="shrink-0 cursor-pointer self-stretch bg-slate-700 px-4 transition-colors hover:bg-orange-600"
       onClick={toggleOpen}
     >
       {isOpen ? (
