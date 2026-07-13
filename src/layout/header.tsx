@@ -12,7 +12,7 @@ export function Header({ isMenuOpen, toggleMenu }: HeaderProps) {
   return (
     <header className="text-neutral-0 flex h-14 items-center bg-slate-800 font-sans">
       <MenuButton isOpen={isMenuOpen} toggleOpen={toggleMenu} />
-      <h1 className="sp mx-6 text-sm font-semibold tracking-[5px] uppercase">
+      <h1 className="sp mx-6 text-sm font-semibold tracking-[4px] uppercase">
         Markdown
       </h1>
       <DocumentInfo />
