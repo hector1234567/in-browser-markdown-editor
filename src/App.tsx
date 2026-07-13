@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./App.css";
 import { Header } from "./layout/header";
 import Menu from "./layout/Menu";
 import DarkModeSwitch from "./components/dark-mode-switch";
@@ -18,7 +17,7 @@ function App() {
   }
 
   return (
-    <div className="relative overflow-hidden font-sans">
+    <div className="relative h-screen overflow-hidden font-sans">
       <aside
         className={`fixed top-0 left-0 flex min-h-screen w-62.5 flex-col justify-between bg-slate-950 p-6 transition-transform ${
           isMenuOpen ? "" : "-translate-x-62.5"

@@ -7,31 +7,74 @@ type PreviewProps = {
 export default function Preview({ markdownText }: PreviewProps) {
   const customMarkdown: Components = {
     h1: ({ children }) => (
-      <h1 className="mb-4 text-3xl font-bold">{children}</h1>
+      <h1 className="mb-5 font-serif text-[32px] leading-snug font-bold text-slate-700">
+        {children}
+      </h1>
     ),
     h2: ({ children }) => (
-      <h2 className="mt-6 mb-3 text-2xl font-semibold">{children}</h2>
+      <h2 className="mb-5 font-serif text-[28px] leading-snug font-light text-slate-700">
+        {children}
+      </h2>
+    ),
+    h3: ({ children }) => (
+      <h3 className="mb-5 font-serif text-[24px] leading-snug font-bold text-slate-700">
+        {children}
+      </h3>
+    ),
+    h4: ({ children }) => (
+      <h4 className="mb-5 font-serif text-[20px] leading-snug font-bold text-slate-700">
+        {children}
+      </h4>
+    ),
+    h5: ({ children }) => (
+      <h5 className="mb-5 font-serif text-[16px] leading-snug font-bold text-slate-700">
+        {children}
+      </h5>
+    ),
+    h6: ({ children }) => (
+      <h6 className="mb-5 font-serif text-[14px] leading-snug font-bold text-orange-600">
+        {children}
+      </h6>
     ),
     p: ({ children }) => (
-      <p className="mb-4 text-base leading-relaxed text-gray-700">{children}</p>
+      <p className="mb-5 font-serif text-[14px] leading-7 text-slate-400">
+        {children}
+      </p>
     ),
     a: ({ children, href }) => (
       <a href={href} className="text-blue-600 underline hover:text-blue-800">
         {children}
       </a>
     ),
+    ol: ({ children }) => (
+      <ol className="mb-5 list-decimal space-y-2 pl-6 font-serif text-[14px] leading-6 font-normal text-slate-400 [&>li]:pl-2">
+        {children}
+      </ol>
+    ),
     ul: ({ children }) => (
-      <ul className="mb-4 list-disc space-y-1 pl-6">{children}</ul>
+      <ul className="mb-5 list-disc space-y-2 pl-6 font-serif text-[14px] leading-6 font-normal text-slate-400 marker:text-orange-600 [&>li]:pl-2">
+        {children}
+      </ul>
     ),
     code: ({ children }) => (
-      <code className="rounded bg-gray-100 px-1.5 py-0.5 text-sm text-pink-600">
+      <code className="font-mono text-[14px] font-semibold text-slate-700">
         {children}
       </code>
+    ),
+    blockquote: ({ children }) => (
+      <blockquote className="mb-5 rounded-sm border-l-3 border-orange-600 bg-neutral-100 px-5 py-6 font-bold [&>p]:mb-0 [&>p]:text-slate-700">
+        {children}
+      </blockquote>
+    ),
+    pre: ({ children }) => (
+      <pre className="mb-5 rounded-sm bg-neutral-100 p-6 font-bold">
+        {children}
+      </pre>
     ),
   };
 
   return (
-    <div className="h-full w-full border-l-1 border-neutral-200">
+    <div className="flex h-full w-full flex-col overflow-y-auto border-l border-neutral-200">
       <div className="bg-neutral-100 px-4 py-3 text-slate-400">
         <h2 className="text-[14px] font-semibold tracking-[3px] uppercase">
           Preview

@@ -14,7 +14,7 @@ export default function Markdown({ text, editText }: MarkdownProps) {
   }
 
   return (
-    <div className="h-full w-full">
+    <div className="flex h-full w-full flex-col overflow-y-auto">
       <div className="bg-neutral-100 px-4 py-3 text-slate-400">
         <h2 className="text-[14px] font-semibold tracking-[3px] uppercase">
           Markdown
@@ -22,6 +22,7 @@ export default function Markdown({ text, editText }: MarkdownProps) {
       </div>
       <div className="bg-neutral-0 h-full px-4 py-3" onClick={handleClickDiv}>
         <textarea
+          name="markdown"
           onChange={(ev) => editText(ev.target.value)}
           className="w-full resize-none text-slate-700 focus-visible:outline-0"
           style={{ fieldSizing: "content" }}

@@ -12,9 +12,16 @@
     format("woff2");
 }
 
+@font-face {
+  font-family: "Roboto Mono";
+  src: url("./assets/fonts/RobotoMono/RobotoMono-VariableFont_wght.ttf")
+    format("woff2");
+}
+
 @theme {
   --font-serif: "Roboto Slab", sans-serif;
   --font-sans: "Roboto", serif;
+  --font-mono: "Roboto Mono", serif;
 
   /* Neutral */
   --color-neutral-950: #000;
