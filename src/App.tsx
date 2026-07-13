@@ -4,10 +4,12 @@ import { Header } from "./layout/header";
 import Menu from "./layout/Menu";
 import DarkModeSwitch from "./components/dark-mode-switch";
 import Markdown from "./layout/markdown";
+import Preview from "./layout/preview";
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
+  // const [showPreview, setShowPreview] = useState(false);
 
   const [text, setText] = useState("");
 
@@ -29,8 +31,9 @@ function App() {
         className={`flex min-h-screen flex-col transition-transform ${isMenuOpen ? "translate-x-62.5" : ""}`}
       >
         <Header isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
-        <main className="h-100 grow">
+        <main className="flex h-100 grow">
           <Markdown text={text} editText={setText} />
+          <Preview markdownText={text} />
         </main>
       </div>
     </div>

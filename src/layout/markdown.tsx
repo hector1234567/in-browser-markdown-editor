@@ -14,7 +14,7 @@ export default function Markdown({ text, editText }: MarkdownProps) {
   }
 
   return (
-    <div className="h-full">
+    <div className="h-full w-full">
       <div className="bg-neutral-100 px-4 py-3 text-slate-400">
         <h2 className="text-[14px] font-semibold tracking-[3px] uppercase">
           Markdown
