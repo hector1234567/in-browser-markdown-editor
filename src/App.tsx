@@ -4,11 +4,14 @@ import Menu from "./layout/Menu";
 import DarkModeSwitch from "./components/dark-mode-switch";
 import Markdown from "./layout/markdown";
 import Preview from "./layout/preview";
+import ShowPreviewButton from "./components/show-preview-button";
+
+const MIN_DOUBLE_WINDOW_WIDTH = 800; // px
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
-  // const [showPreview, setShowPreview] = useState(false);
+  const [showPreview, setShowPreview] = useState(true);
 
   const [text, setText] = useState("");
 
@@ -38,9 +41,17 @@ function App() {
         className={`flex min-h-screen flex-col transition-transform ${isMenuOpen ? "translate-x-62.5" : ""}`}
       >
         <Header isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
-        <main className="flex h-100 grow">
-          <Markdown text={text} editText={setText} />
-          <Preview markdownText={text} />
+        <main className="relative flex h-100 grow">
+          {!showPreview || window.innerWidth > MIN_DOUBLE_WINDOW_WIDTH ? (
+            <Markdown text={text} editText={setText} />
+          ) : null}
+          {showPreview ? <Preview markdownText={text} /> : null}
+          <div className="absolute top-2.5 right-6">
+            <ShowPreviewButton
+              show={showPreview}
+              onClickHandler={() => setShowPreview((show) => !show)}
+            />
+          </div>
         </main>
       </div>
     </div>

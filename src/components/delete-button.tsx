@@ -2,7 +2,7 @@ export default function DeleteButton() {
   return (
     <button className="group cursor-pointer rounded-sm p-2.5">
       <svg
-        className="fill-slate-400 group-hover:fill-orange-400"
+        className="fill-slate-400 transition-colors group-hover:fill-orange-400"
         width="18"
         height="20"
         xmlns="http://www.w3.org/2000/svg"
