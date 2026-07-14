@@ -40,18 +40,18 @@ function App() {
         className={`flex min-h-screen flex-col transition-transform ${isMenuOpen ? "translate-x-62.5" : ""}`}
       >
         <Header isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
-        <main className="relative flex h-100 grow dark:bg-neutral-950">
+        <main className="relative flex h-100 grow overflow-x-auto dark:bg-neutral-950">
           {!showPreview || window.innerWidth > MIN_DOUBLE_WINDOW_WIDTH ? (
             <Markdown text={text} editText={setText} />
           ) : null}
           {showPreview ? <Preview markdownText={text} /> : null}
-          <div className="absolute top-0 right-6 flex h-10 items-center">
-            <ShowPreviewButton
-              show={showPreview}
-              onClickHandler={() => setShowPreview((show) => !show)}
-            />
-          </div>
         </main>
+      </div>
+      <div className="absolute top-14 right-6 flex h-10 items-center">
+        <ShowPreviewButton
+          show={showPreview}
+          onClickHandler={() => setShowPreview((show) => !show)}
+        />
       </div>
     </div>
   );

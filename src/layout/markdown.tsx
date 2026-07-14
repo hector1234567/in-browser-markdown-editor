@@ -13,14 +13,14 @@ export default function Markdown({ text, editText }: MarkdownProps) {
   }
 
   return (
-    <div className="flex h-full w-full flex-col overflow-y-auto">
+    <div className="flex h-full w-full flex-col">
       <div className="bg-neutral-100 px-4 py-2 text-slate-400 dark:bg-slate-950">
         <h2 className="text-[14px] font-semibold tracking-[3px] uppercase">
           Markdown
         </h2>
       </div>
       <div
-        className="bg-neutral-0 h-full px-4 py-3 dark:bg-neutral-950"
+        className="bg-neutral-0 h-full overflow-y-auto px-4 py-3 dark:bg-neutral-950"
         onClick={handleClickDiv}
       >
         <textarea
