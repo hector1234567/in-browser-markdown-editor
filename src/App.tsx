@@ -45,7 +45,7 @@ function App() {
             <Markdown text={text} editText={setText} />
           ) : null}
           {showPreview ? <Preview markdownText={text} /> : null}
-          <div className="absolute top-2.5 right-6">
+          <div className="absolute top-0 right-6 flex h-10 items-center">
             <ShowPreviewButton
               show={showPreview}
               onClickHandler={() => setShowPreview((show) => !show)}

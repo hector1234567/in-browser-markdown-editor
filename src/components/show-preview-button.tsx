@@ -11,7 +11,7 @@ export default function ShowPreviewButton({
     <button onClick={onClickHandler} className="cursor-pointer">
       {show ? (
         <svg
-          className="fill-slate-400 transition-colors hover:fill-orange-600"
+          className="fill-slate-400 transition-colors hover:fill-orange-400"
           width="16"
           height="15"
           xmlns="http://www.w3.org/2000/svg"
@@ -20,7 +20,7 @@ export default function ShowPreviewButton({
         </svg>
       ) : (
         <svg
-          className="fill-slate-400 transition-colors hover:fill-orange-600"
+          className="fill-slate-400 transition-colors hover:fill-orange-400"
           width="16"
           height="12"
           xmlns="http://www.w3.org/2000/svg"
