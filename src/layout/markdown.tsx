@@ -9,7 +9,6 @@ export default function Markdown({ text, editText }: MarkdownProps) {
   const editor = useRef<HTMLTextAreaElement>(null);
 
   function handleClickDiv() {
-    console.log("Entra");
     editor.current?.focus();
   }
 
@@ -27,9 +26,8 @@ export default function Markdown({ text, editText }: MarkdownProps) {
           className="w-full resize-none text-slate-700 focus-visible:outline-0"
           style={{ fieldSizing: "content" }}
           ref={editor}
-        >
-          {text}
-        </textarea>
+          value={text}
+        />
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Header } from "./layout/header";
 import Menu from "./layout/Menu";
 import DarkModeSwitch from "./components/dark-mode-switch";
@@ -15,6 +15,14 @@ function App() {
   function toggleMenu() {
     setIsMenuOpen((isOpen) => !isOpen);
   }
+
+  useEffect(() => {
+    (async function getExampleMarkdown() {
+      const res = await fetch("/example.md");
+      const data = await res.text();
+      setText(data);
+    })();
+  }, []);
 
   return (
     <div className="relative h-screen overflow-hidden font-sans">
