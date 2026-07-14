@@ -44,3 +44,5 @@
 
   --default-transition-duration: 0.3s;
 }
+
+@custom-variant dark (&:where(.dark, .dark *));

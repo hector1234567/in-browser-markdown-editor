@@ -10,7 +10,6 @@ const MIN_DOUBLE_WINDOW_WIDTH = 800; // px
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
   const [showPreview, setShowPreview] = useState(true);
 
   const [text, setText] = useState("");
@@ -35,13 +34,13 @@ function App() {
         }`}
       >
         <Menu />
-        <DarkModeSwitch isChecked={darkMode} setDarkMode={setDarkMode} />
+        <DarkModeSwitch />
       </aside>
       <div
         className={`flex min-h-screen flex-col transition-transform ${isMenuOpen ? "translate-x-62.5" : ""}`}
       >
         <Header isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
-        <main className="relative flex h-100 grow">
+        <main className="relative flex h-100 grow dark:bg-neutral-950">
           {!showPreview || window.innerWidth > MIN_DOUBLE_WINDOW_WIDTH ? (
             <Markdown text={text} editText={setText} />
           ) : null}
