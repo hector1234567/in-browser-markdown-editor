@@ -13,6 +13,7 @@ function App() {
   const [showEditor, setShowEditor] = useState(true);
 
   const [text, setText] = useState("");
+  const [name, setName] = useState("New Document");
 
   function toggleMenu() {
     setIsMenuOpen((isOpen) => !isOpen);
@@ -39,7 +40,13 @@ function App() {
       <div
         className={`flex min-h-screen flex-col transition-transform ${isMenuOpen ? "translate-x-62.5" : ""}`}
       >
-        <Header isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
+        <Header
+          isMenuOpen={isMenuOpen}
+          toggleMenu={toggleMenu}
+          text={text}
+          name={name}
+          setName={setName}
+        />
         <main className="relative flex h-100 grow overflow-x-auto dark:bg-neutral-950">
           {showEditor ? <Markdown text={text} editText={setText} /> : null}
           {!showEditor || window.innerWidth > MIN_DOUBLE_WINDOW_WIDTH ? (
