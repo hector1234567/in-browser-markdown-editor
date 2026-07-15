@@ -54,3 +54,7 @@
 html.dark {
   color-scheme: dark;
 }
+
+@utility container {
+  max-width: 720px;
+}

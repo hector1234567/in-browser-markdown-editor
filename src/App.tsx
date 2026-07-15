@@ -10,7 +10,7 @@ const MIN_DOUBLE_WINDOW_WIDTH = 800; // px
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [showPreview, setShowPreview] = useState(true);
+  const [showEditor, setShowEditor] = useState(true);
 
   const [text, setText] = useState("");
 
@@ -41,16 +41,16 @@ function App() {
       >
         <Header isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
         <main className="relative flex h-100 grow overflow-x-auto dark:bg-neutral-950">
-          {!showPreview || window.innerWidth > MIN_DOUBLE_WINDOW_WIDTH ? (
-            <Markdown text={text} editText={setText} />
+          {showEditor ? <Markdown text={text} editText={setText} /> : null}
+          {!showEditor || window.innerWidth > MIN_DOUBLE_WINDOW_WIDTH ? (
+            <Preview markdownText={text} />
           ) : null}
-          {showPreview ? <Preview markdownText={text} /> : null}
         </main>
       </div>
       <div className="absolute top-14 right-6 flex h-10 items-center">
         <ShowPreviewButton
-          show={showPreview}
-          onClickHandler={() => setShowPreview((show) => !show)}
+          show={showEditor}
+          onClickHandler={() => setShowEditor((show) => !show)}
         />
       </div>
     </div>

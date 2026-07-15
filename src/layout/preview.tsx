@@ -84,9 +84,11 @@ export default function Preview({ markdownText }: PreviewProps) {
         </h2>
       </div>
       <div className="bg-neutral-0 h-full overflow-y-auto px-4 py-3 dark:bg-neutral-950">
-        <ReactMarkdown components={customMarkdown}>
-          {markdownText}
-        </ReactMarkdown>
+        <div className="container mx-auto">
+          <ReactMarkdown components={customMarkdown}>
+            {markdownText}
+          </ReactMarkdown>
+        </div>
       </div>
     </div>
   );
