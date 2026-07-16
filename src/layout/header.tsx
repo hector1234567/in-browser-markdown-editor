@@ -9,6 +9,7 @@ type HeaderProps = {
   text: string;
   name: string;
   setName: (name: string) => void;
+  deleteDocument: () => void;
 };
 
 export function Header({
@@ -17,6 +18,7 @@ export function Header({
   text,
   name,
   setName,
+  deleteDocument,
 }: HeaderProps) {
   return (
     <header className="text-neutral-0 flex h-14 items-center bg-slate-800 font-sans">
@@ -26,7 +28,7 @@ export function Header({
       </h1>
       <DocumentInfo name={name} setName={setName} />
       <div className="align-center mr-3 ml-auto flex shrink-0 gap-2">
-        <DeleteButton />
+        <DeleteButton deleteDocument={deleteDocument} />
         <SaveButton text={text} name={name} />
       </div>
     </header>
