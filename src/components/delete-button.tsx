@@ -4,9 +4,13 @@ import Button from "./button";
 
 type DeleteButtonProps = {
   deleteDocument: () => void;
+  documentName: string;
 };
 
-export default function DeleteButton({ deleteDocument }: DeleteButtonProps) {
+export default function DeleteButton({
+  deleteDocument,
+  documentName,
+}: DeleteButtonProps) {
   const [showModal, setShowModal] = useState(false);
 
   function confirmDeletion() {
@@ -35,8 +39,8 @@ export default function DeleteButton({ deleteDocument }: DeleteButtonProps) {
             Delete this document?
           </h2>
           <p className="mb-5 text-[14px] leading-7 text-slate-400">
-            Are you sure you want to delete the ‘welcome.md’ document and its
-            contents? This action cannot be reversed.
+            Are you sure you want to delete the <strong>{documentName}</strong>{" "}
+            document and its contents? This action cannot be reversed.
           </p>
           <Button onClick={confirmDeletion}>Confirm & Delete</Button>
         </Modal>

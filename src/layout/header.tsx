@@ -28,7 +28,7 @@ export function Header({
       </h1>
       <DocumentInfo name={name} setName={setName} />
       <div className="align-center mr-3 ml-auto flex shrink-0 gap-2">
-        <DeleteButton deleteDocument={deleteDocument} />
+        <DeleteButton deleteDocument={deleteDocument} documentName={name} />
         <SaveButton text={text} name={name} />
       </div>
     </header>
