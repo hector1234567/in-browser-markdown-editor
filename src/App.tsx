@@ -39,7 +39,7 @@ function App() {
           isMenuOpen ? "" : "-translate-x-62.5"
         }`}
       >
-        <Menu />
+        <Menu setText={setText} setName={setName} />
         <DarkModeSwitch />
       </aside>
       <div

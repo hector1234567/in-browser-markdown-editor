@@ -8,22 +8,31 @@ type SaveButtonProps = {
 
 export default function SaveButton({ text, name }: SaveButtonProps) {
   async function saveFile() {
-    if (!window.showOpenFilePicker) return;
+    try {
+      if (!window.showOpenFilePicker)
+        return alert("Your browser doesn't support File System Access API.");
 
-    const handle = await window.showSaveFilePicker({
-      suggestedName: name,
-      types: [
-        {
-          description: "Markdown file.",
-          accept: {
-            "text/plain": [".md"],
+      const handle = await window.showSaveFilePicker({
+        suggestedName: name,
+        types: [
+          {
+            description: "Markdown file.",
+            accept: {
+              "text/plain": [".md"],
+            },
           },
-        },
-      ],
-    });
-    const writable = await handle.createWritable();
-    await writable.write(text);
-    await writable.close();
+        ],
+      });
+      const writable = await handle.createWritable();
+      await writable.write(text);
+      await writable.close();
+    } catch (e) {
+      if (e instanceof Error) {
+        console.log(e.message);
+      } else {
+        console.log("Error");
+      }
+    }
   }
 
   return (
