@@ -44,20 +44,6 @@ export default function Menu({
     setCurrentId(id);
   }
 
-  // useEffect(() => {
-  //   console.log(getAllFiles().length);
-  //   if (getAllFiles().length === 0) {
-  //     (async function getExampleMarkdown() {
-  //       const res = await fetch("/example.md");
-  //       const text = await res.text();
-  //       addFile(text, "example.md");
-  //       setText(text);
-  //       setName("example.md");
-  //     })();
-  //   }
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [getAllFiles]);
-
   return (
     <nav className="flex h-full flex-col">
       <h2 className="mb-7.25 text-sm font-semibold tracking-widest text-slate-400 uppercase">

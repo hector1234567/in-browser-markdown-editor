@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Header } from "./layout/header";
 import DarkModeSwitch from "./components/dark-mode-switch";
 import Markdown from "./layout/markdown";
@@ -10,7 +10,7 @@ import Menu from "./layout/menu";
 const MIN_DOUBLE_WINDOW_WIDTH = 800; // px
 
 function App() {
-  const [isMenuOpen, setIsMenuOpen] = useState(true);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showEditor, setShowEditor] = useState(true);
 
   const [id, setId] = useState<IDBValidKey | undefined>();
@@ -26,6 +26,15 @@ function App() {
   function toggleMenu() {
     setIsMenuOpen((isOpen) => !isOpen);
   }
+
+  useEffect(() => {
+    (async function getExampleMarkdown() {
+      const res = await fetch("/example.md");
+      const text = await res.text();
+      setText(text);
+      setName("example.md");
+    })();
+  }, []);
 
   return (
     <div className="relative h-screen overflow-hidden font-sans">
