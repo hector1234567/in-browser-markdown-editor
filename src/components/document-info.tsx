@@ -7,12 +7,12 @@ type DocumentInfoProps = {
 
 export default function DocumentInfo({ name, setName }: DocumentInfoProps) {
   return (
-    <div className="flex grow items-center gap-4 border-l border-slate-400 px-6">
+    <div className="flex grow items-center gap-4 border-slate-400 px-6 sm:border-l">
       <img src={document} alt="Document Info" className="" />
-      <form className="flex w-full max-w-100 shrink flex-col">
+      <div className="flex w-full max-w-100 shrink flex-col">
         <label
           htmlFor="document-name"
-          className="cursor-pointer text-[10px] text-slate-400"
+          className="hidden cursor-pointer text-[10px] text-slate-400 sm:block"
         >
           Document Name
         </label>
@@ -22,7 +22,7 @@ export default function DocumentInfo({ name, setName }: DocumentInfoProps) {
           className="self-stretch p-0 text-xs outline-0 focus:border-b focus:border-white"
           value={name}
         />
-      </form>
+      </div>
     </div>
   );
 }

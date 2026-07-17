@@ -77,7 +77,7 @@ export default function Preview({ markdownText }: PreviewProps) {
   };
 
   return (
-    <div className="flex h-full w-full flex-col border-l border-neutral-200 dark:border-slate-800">
+    <div className="flex h-full w-full flex-col border-0 border-neutral-200 sm:border-l dark:border-slate-800">
       <div className="bg-neutral-100 px-4 py-2 text-slate-400 dark:bg-slate-950">
         <h2 className="text-[14px] font-semibold tracking-[3px] uppercase">
           Preview

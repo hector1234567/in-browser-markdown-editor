@@ -71,12 +71,14 @@ function App() {
             ) : null}
           </main>
         </div>
-        <div className="absolute top-14 right-6 flex h-10 items-center">
-          <ShowPreviewButton
-            show={showEditor}
-            onClickHandler={() => setShowEditor((show) => !show)}
-          />
-        </div>
+        {!isMenuOpen ? (
+          <div className="absolute top-14 right-6 flex h-10 items-center">
+            <ShowPreviewButton
+              show={showEditor}
+              onClickHandler={() => setShowEditor((show) => !show)}
+            />
+          </div>
+        ) : null}
       </FilesProvider>
     </div>
   );
