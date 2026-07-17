@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import Button from "../components/button";
 import DocumentItem from "../components/document-item";
 import { useFiles } from "../hooks/useFiles";
@@ -44,18 +44,19 @@ export default function Menu({
     setCurrentId(id);
   }
 
-  useEffect(() => {
-    if (getAllFiles().length === 0) {
-      (async function getExampleMarkdown() {
-        const res = await fetch("/example.md");
-        const text = await res.text();
-        addFile(text, "example.md");
-        setText(text);
-        setName("example.md");
-      })();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // useEffect(() => {
+  //   console.log(getAllFiles().length);
+  //   if (getAllFiles().length === 0) {
+  //     (async function getExampleMarkdown() {
+  //       const res = await fetch("/example.md");
+  //       const text = await res.text();
+  //       addFile(text, "example.md");
+  //       setText(text);
+  //       setName("example.md");
+  //     })();
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [getAllFiles]);
 
   return (
     <nav className="flex h-full flex-col">
@@ -64,7 +65,7 @@ export default function Menu({
       </h2>
       <Button onClick={loadDocument}>+ New Document</Button>
 
-      <ul className="my-6 flex flex-col-reverse gap-6">
+      <ul className="my-6 flex flex-col-reverse gap-6 overflow-y-auto">
         {getAllFiles().map((file) => (
           <li key={String(file.id)}>
             <DocumentItem

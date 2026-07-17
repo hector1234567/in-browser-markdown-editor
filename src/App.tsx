@@ -10,7 +10,7 @@ import Menu from "./layout/Menu";
 const MIN_DOUBLE_WINDOW_WIDTH = 800; // px
 
 function App() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(true);
   const [showEditor, setShowEditor] = useState(true);
 
   const [id, setId] = useState<IDBValidKey | undefined>();
@@ -31,7 +31,7 @@ function App() {
     <div className="relative h-screen overflow-hidden font-sans">
       <FilesProvider>
         <aside
-          className={`fixed top-0 left-0 flex min-h-screen w-62.5 flex-col justify-between bg-slate-950 p-6 transition-transform ${
+          className={`fixed top-0 left-0 flex h-screen w-62.5 flex-col justify-between bg-slate-950 p-6 transition-transform ${
             isMenuOpen ? "" : "-translate-x-62.5"
           }`}
         >
