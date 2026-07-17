@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Button from "../components/button";
 import DocumentItem from "../components/document-item";
 import { useFiles } from "../hooks/useFiles";
@@ -42,6 +43,19 @@ export default function Menu({
     setName(file.name);
     setCurrentId(id);
   }
+
+  useEffect(() => {
+    if (getAllFiles().length === 0) {
+      (async function getExampleMarkdown() {
+        const res = await fetch("/example.md");
+        const text = await res.text();
+        addFile(text, "example.md");
+        setText(text);
+        setName("example.md");
+      })();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <nav className="flex h-full flex-col">
