@@ -5,8 +5,8 @@ import { useFiles } from "../hooks/useFiles";
 type MenuProps = {
   setText: (text: string) => void;
   setName: (text: string) => void;
-  setCurrentId: (id: number) => void;
-  currentId: number;
+  setCurrentId: (id: IDBValidKey) => void;
+  currentId?: IDBValidKey;
 };
 
 export default function Menu({
@@ -26,17 +26,14 @@ export default function Menu({
       const file = await handle.getFile();
 
       const content = await file.text();
-      setText(content);
-      setName(file.name);
 
       await addFile(content, file.name);
     } catch (e) {
       console.error(e);
-      alert("File is invalid");
     }
   }
 
-  function handleClickItem(id?: number) {
+  function handleClickItem(id?: IDBValidKey) {
     if (!id) return;
     const files = getAllFiles();
     const file = files.filter((f) => f.id === id)[0];
@@ -53,9 +50,9 @@ export default function Menu({
       </h2>
       <Button onClick={loadDocument}>+ New Document</Button>
 
-      <ul className="my-6 flex flex-col gap-6">
+      <ul className="my-6 flex flex-col-reverse gap-6">
         {getAllFiles().map((file) => (
-          <li key={file.id}>
+          <li key={String(file.id)}>
             <DocumentItem
               name={file.name}
               date={file.date}

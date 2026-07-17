@@ -1,18 +1,21 @@
-import { createContext, type Dispatch, type SetStateAction } from "react";
+import { createContext } from "react";
 
 export type file = {
-  id?: number;
+  id?: IDBValidKey;
   text: string;
   name: string;
   date: number;
 };
 
 export interface FilesContextType {
-  getActualFile: () => file;
-  addFile: (text: string, name: string, date?: number) => Promise<IDBValidKey>;
-  updateActualFile: (text: string, name: string) => Promise<IDBValidKey>;
-  setActualFileIndex: Dispatch<SetStateAction<number>>;
+  addFile: (text: string, name: string, date?: number) => Promise<void>;
+  updateFile: (
+    text: string,
+    name: string,
+    index: IDBValidKey,
+  ) => Promise<IDBValidKey>;
   getAllFiles: () => file[];
+  deleteFile: (id: IDBValidKey) => Promise<void>;
 }
 
 export const FilesContext = createContext<FilesContextType | null>(null);

@@ -1,20 +1,25 @@
 import { useState } from "react";
 import Modal from "../layout/modal";
 import Button from "./button";
+import { useFiles } from "../hooks/useFiles";
 
 type DeleteButtonProps = {
   deleteDocument: () => void;
   documentName: string;
+  index?: IDBValidKey;
 };
 
 export default function DeleteButton({
   deleteDocument,
   documentName,
+  index,
 }: DeleteButtonProps) {
   const [showModal, setShowModal] = useState(false);
+  const { deleteFile } = useFiles();
 
   function confirmDeletion() {
     deleteDocument();
+    if (index) deleteFile(index);
     setShowModal(false);
   }
 
@@ -35,10 +40,10 @@ export default function DeleteButton({
       </button>
       {showModal ? (
         <Modal closeModal={() => setShowModal(false)}>
-          <h2 className="mb-4 font-serif text-[20px] font-bold text-neutral-950">
+          <h2 className="dark:text-neutral-0 mb-4 font-serif text-[20px] font-bold text-neutral-950">
             Delete this document?
           </h2>
-          <p className="mb-5 text-[14px] leading-7 text-slate-400">
+          <p className="mb-5 text-[14px] leading-7 text-slate-400 dark:text-slate-300">
             Are you sure you want to delete the <strong>{documentName}</strong>{" "}
             document and its contents? This action cannot be reversed.
           </p>

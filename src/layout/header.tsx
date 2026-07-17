@@ -10,6 +10,7 @@ type HeaderProps = {
   name: string;
   setName: (name: string) => void;
   deleteDocument: () => void;
+  index?: IDBValidKey;
 };
 
 export function Header({
@@ -19,6 +20,7 @@ export function Header({
   name,
   setName,
   deleteDocument,
+  index,
 }: HeaderProps) {
   return (
     <header className="text-neutral-0 flex h-14 items-center bg-slate-800 font-sans">
@@ -28,8 +30,12 @@ export function Header({
       </h1>
       <DocumentInfo name={name} setName={setName} />
       <div className="align-center mr-3 ml-auto flex shrink-0 gap-2">
-        <DeleteButton deleteDocument={deleteDocument} documentName={name} />
-        <SaveButton text={text} name={name} />
+        <DeleteButton
+          deleteDocument={deleteDocument}
+          documentName={name}
+          index={index}
+        />
+        <SaveButton text={text} name={name} index={index} />
       </div>
     </header>
   );

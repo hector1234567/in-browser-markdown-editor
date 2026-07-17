@@ -13,13 +13,14 @@ function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showEditor, setShowEditor] = useState(true);
 
-  const [id, setId] = useState(0);
+  const [id, setId] = useState<IDBValidKey | undefined>();
   const [text, setText] = useState("");
   const [name, setName] = useState("New Document");
 
   function deleteDocument() {
     setName("");
     setText("");
+    setId(undefined);
   }
 
   function toggleMenu() {
@@ -60,6 +61,7 @@ function App() {
             name={name}
             setName={setName}
             deleteDocument={deleteDocument}
+            index={id}
           />
           <main className="relative flex h-100 grow overflow-x-auto dark:bg-neutral-950">
             {showEditor ? <Markdown text={text} editText={setText} /> : null}

@@ -22,9 +22,9 @@ const Modal = ({ closeModal, children }: ModalProps) => {
     };
   }, []);
   return createPortal(
-    <div className="absolute top-0 left-0 flex h-screen w-screen items-center justify-center bg-[#00000053]">
+    <div className="absolute top-0 left-0 flex h-screen w-screen items-center justify-center bg-[#00000053] dark:bg-[#7c818782]">
       <div className="absolute h-full w-full" onClick={closeModal}></div>
-      <div className="bg-neutral-0 z-10 max-w-85.75 rounded-sm p-6">
+      <div className="bg-neutral-0 z-10 max-w-85.75 rounded-sm p-6 dark:bg-slate-950">
         {children}
       </div>
     </div>,
