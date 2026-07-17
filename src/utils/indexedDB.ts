@@ -16,7 +16,7 @@ export async function addFileToDB(file: file) {
 
 export async function updateFileFromDB(file: file) {
   const db = await getDB();
-  return db.put("files", file, file.id);
+  return db.put("files", file);
 }
 
 export async function deleteFileFromDB(id: IDBValidKey) {

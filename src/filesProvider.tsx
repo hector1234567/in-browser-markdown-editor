@@ -41,7 +41,7 @@ export function FilesProvider({ children }: FilesProviderProps) {
       return [...fitered, updatedFile];
     });
 
-    return await updateFileFromDB(updatedFile);
+    return updateFileFromDB(updatedFile);
   }
 
   async function deleteFile(id: IDBValidKey) {
