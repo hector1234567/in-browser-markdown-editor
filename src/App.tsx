@@ -37,10 +37,10 @@ function App() {
   }, []);
 
   return (
-    <div className="relative h-screen overflow-hidden font-sans">
+    <div className="relative h-dvh overflow-hidden font-sans">
       <FilesProvider>
         <aside
-          className={`fixed top-0 left-0 flex h-screen w-62.5 flex-col justify-between bg-slate-950 p-6 transition-transform ${
+          className={`fixed top-0 left-0 flex h-dvh w-62.5 flex-col justify-between bg-slate-950 p-6 transition-transform ${
             isMenuOpen ? "" : "-translate-x-62.5"
           }`}
         >
@@ -53,7 +53,7 @@ function App() {
           <DarkModeSwitch />
         </aside>
         <div
-          className={`flex min-h-screen flex-col transition-transform ${isMenuOpen ? "translate-x-62.5" : ""}`}
+          className={`flex min-h-dvh flex-col transition-transform ${isMenuOpen ? "translate-x-62.5" : ""}`}
         >
           <Header
             isMenuOpen={isMenuOpen}
