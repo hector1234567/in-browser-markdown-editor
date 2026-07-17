@@ -5,7 +5,7 @@ import Markdown from "./layout/markdown";
 import Preview from "./layout/preview";
 import ShowPreviewButton from "./components/show-preview-button";
 import { FilesProvider } from "./filesProvider";
-import Menu from "./layout/Menu";
+import Menu from "./layout/menu";
 
 const MIN_DOUBLE_WINDOW_WIDTH = 800; // px
 
