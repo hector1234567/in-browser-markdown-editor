@@ -17,6 +17,7 @@ async function getDB() {
 
 export async function addFileToDB(file: file) {
   const db = await getDB();
+  console.log("addFileToDB" + file);
   return db.add("files", file);
 }
 

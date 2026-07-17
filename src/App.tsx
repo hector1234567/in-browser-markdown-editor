@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { Header } from "./layout/header";
-import Menu from "./layout/Menu";
 import DarkModeSwitch from "./components/dark-mode-switch";
 import Markdown from "./layout/markdown";
 import Preview from "./layout/preview";
 import ShowPreviewButton from "./components/show-preview-button";
 import { FilesProvider } from "./filesProvider";
+import Menu from "./layout/Menu";
 
 const MIN_DOUBLE_WINDOW_WIDTH = 800; // px
 

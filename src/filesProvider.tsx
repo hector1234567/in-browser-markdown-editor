@@ -16,12 +16,19 @@ export function FilesProvider({ children }: FilesProviderProps) {
     return files[actualFileIndex];
   }
 
-  async function addFile(text: string, name: string) {
+  function getAllFiles() {
+    console.log("getAllFiles");
+    return files;
+  }
+
+  async function addFile(text: string, name: string, date: number | undefined) {
     const newFile = {
       text,
       name,
-      date: new Date().getTime(),
+      date: date ?? new Date().getTime(),
     };
+
+    setFiles((fs) => [...fs, newFile]);
 
     return await addFileToDB(newFile);
   }
@@ -45,6 +52,7 @@ export function FilesProvider({ children }: FilesProviderProps) {
   useEffect(() => {
     (async function loadFiles() {
       const files = await getFilesFromDB();
+      console.log("FILES", files);
       setFiles(files);
     })();
   }, []);
@@ -54,6 +62,7 @@ export function FilesProvider({ children }: FilesProviderProps) {
     addFile,
     updateActualFile,
     setActualFileIndex,
+    getAllFiles,
   };
 
   return (

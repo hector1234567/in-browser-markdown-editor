@@ -9,9 +9,10 @@ export type file = {
 
 export interface FilesContextType {
   getActualFile: () => file;
-  addFile: (text: string, name: string) => Promise<IDBValidKey>;
+  addFile: (text: string, name: string, date?: number) => Promise<IDBValidKey>;
   updateActualFile: (text: string, name: string) => Promise<IDBValidKey>;
   setActualFileIndex: Dispatch<SetStateAction<number>>;
+  getAllFiles: () => file[];
 }
 
 export const FilesContext = createContext<FilesContextType | null>(null);

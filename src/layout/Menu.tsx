@@ -1,5 +1,6 @@
 import Button from "../components/button";
 import DocumentItem from "../components/document-item";
+import { useFiles } from "../hooks/useFiles";
 
 type MenuProps = {
   setText: (text: string) => void;
@@ -7,6 +8,8 @@ type MenuProps = {
 };
 
 export default function Menu({ setText, setName }: MenuProps) {
+  const { addFile, getAllFiles } = useFiles();
+
   async function loadDocument() {
     try {
       if (!window.showOpenFilePicker)
@@ -14,10 +17,12 @@ export default function Menu({ setText, setName }: MenuProps) {
 
       const [handle] = await window.showOpenFilePicker();
       const file = await handle.getFile();
-      console.log(file);
+
       const content = await file.text();
       setText(content);
       setName(file.name);
+
+      await addFile(content, file.name);
     } catch (e) {
       console.error(e);
       alert("File is invalid");
@@ -32,15 +37,11 @@ export default function Menu({ setText, setName }: MenuProps) {
       <Button onClick={loadDocument}>+ New Document</Button>
 
       <ul className="my-6 flex flex-col gap-6">
-        <li>
-          <DocumentItem />
-        </li>
-        <li>
-          <DocumentItem />
-        </li>
-        <li>
-          <DocumentItem />
-        </li>
+        {getAllFiles().map((file) => (
+          <li key={file.id}>
+            <DocumentItem id={file.id} name={file.name} date={file.date} />
+          </li>
+        ))}
       </ul>
     </nav>
   );
