@@ -13,6 +13,7 @@ function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showEditor, setShowEditor] = useState(true);
 
+  const [id, setId] = useState(0);
   const [text, setText] = useState("");
   const [name, setName] = useState("New Document");
 
@@ -41,7 +42,12 @@ function App() {
             isMenuOpen ? "" : "-translate-x-62.5"
           }`}
         >
-          <Menu setText={setText} setName={setName} />
+          <Menu
+            setText={setText}
+            setName={setName}
+            setCurrentId={setId}
+            currentId={id}
+          />
           <DarkModeSwitch />
         </aside>
         <div

@@ -17,7 +17,6 @@ export function FilesProvider({ children }: FilesProviderProps) {
   }
 
   function getAllFiles() {
-    console.log("getAllFiles");
     return files;
   }
 
@@ -52,7 +51,6 @@ export function FilesProvider({ children }: FilesProviderProps) {
   useEffect(() => {
     (async function loadFiles() {
       const files = await getFilesFromDB();
-      console.log("FILES", files);
       setFiles(files);
     })();
   }, []);

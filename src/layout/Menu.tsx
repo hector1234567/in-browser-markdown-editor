@@ -5,9 +5,16 @@ import { useFiles } from "../hooks/useFiles";
 type MenuProps = {
   setText: (text: string) => void;
   setName: (text: string) => void;
+  setCurrentId: (id: number) => void;
+  currentId: number;
 };
 
-export default function Menu({ setText, setName }: MenuProps) {
+export default function Menu({
+  setText,
+  setName,
+  setCurrentId,
+  currentId,
+}: MenuProps) {
   const { addFile, getAllFiles } = useFiles();
 
   async function loadDocument() {
@@ -29,6 +36,16 @@ export default function Menu({ setText, setName }: MenuProps) {
     }
   }
 
+  function handleClickItem(id?: number) {
+    if (!id) return;
+    const files = getAllFiles();
+    const file = files.filter((f) => f.id === id)[0];
+    if (!file) return;
+    setText(file.text);
+    setName(file.name);
+    setCurrentId(id);
+  }
+
   return (
     <nav className="flex h-full flex-col">
       <h2 className="mb-7.25 text-sm font-semibold tracking-widest text-slate-400 uppercase">
@@ -39,7 +56,12 @@ export default function Menu({ setText, setName }: MenuProps) {
       <ul className="my-6 flex flex-col gap-6">
         {getAllFiles().map((file) => (
           <li key={file.id}>
-            <DocumentItem id={file.id} name={file.name} date={file.date} />
+            <DocumentItem
+              name={file.name}
+              date={file.date}
+              onClick={() => handleClickItem(file.id)}
+              selected={file.id === currentId}
+            />
           </li>
         ))}
       </ul>
